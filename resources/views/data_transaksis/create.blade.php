@@ -24,7 +24,6 @@
 @endsection
 @section('scripts')
 <script>
-
     $(document).ready(function() {
         $('#TOTAL').mask('000.000.000', {reverse: true});
         $('#TOTAL_BERSIH').mask('000.000.000', {reverse: true});
@@ -38,11 +37,15 @@
         var i=1
         $('.select-barang').select2({
             theme: "bootstrap",
-            placeholder: 'Pilih Barang'
+        });
+        $('.select-mekanik').select2({
+            theme: "bootstrap",
         });
         $('.select-pelanggan').select2({
             theme: "bootstrap",
-            placeholder: 'Pilih Pelanggan'
+        });
+        $('.select-detail-motor').select2({
+            theme: "bootstrap",
         });
         $('#TGL_PENJUALAN').datepicker({
                 autoclose : true,
@@ -90,8 +93,7 @@
             $(".subdiskon").each(function() {
                 totalDiskon += parseInt($(this).val());
             });
-            // a = $('#TOTAL').val();
-            // a = parseInt(a) + parseInt(total);
+            
             $('#TOTAL_BARANG').val(total);
             $('#TOTAL_DISKON').val(totalDiskon);
             hitungTotalAll();
@@ -101,43 +103,17 @@
         var j=1
         $('.select-jasa_servis').select2({
             theme: "bootstrap",
-            placeholder: 'Pilih Jasa Servis'
         });
         $('.select-jasa_servis').on("select2:select", function(e) { 
             var id = $(this).val();
             $.get("/data-jasa_servis/"+id, function(data, status){
                 $('#NAMA_JASA').val(data.NAMA_JASA);
                 $('#HARGA_JASA').val(data.HARGA);
-                // $('#BIAYA_TAMBAHAN').val(data.biaya_tambahan);                
                 $('#TOTAL_JASA').val(data.HARGA);
 
                 hitungTotalAll();
             });
         });
-        // $('#btn-tambah-jasa').on('click',function(e){
-        //     $("#daftar-jasa-servis").append('<tr>'+
-        //         '<td>'+i+'</td>'+
-        //         '<td><input type="text" readonly class="text-right form-control" name="jasa_servis[]" value="'+$('#NAMA_JASA').val()+'"></td>'+
-        //         '<td><input type="text" readonly class="text-right form-control harga_jasa" name="harga[]" value="'+$('#HARGA_JASA').val()+'"></td>'+
-        //         '<td><input type="text" readonly class="text-right form-control biaya_tambahan" name="biaya_tambahan[]" value="'+$('#BIAYA_TAMBAHAN').val()+'"></td>'+
-        //         // '<td><input type="text" readonly class="text-right form-control diskon" name="diskon[]" value="'+$('#DISKON').val()+'"></td>'+
-        //     '</tr>');
-        //     j++;
-        //     $('#HARGA_JASA').val('');
-        //     $('#subtotal_jasa_servis').val('');
-        //     $('.select-jasa_servis').val(null).triggerr('change');
-        //     var totalJasa = 0;
-        //     var biayaTambahan = 0;
-        //     var diskon = 0;
-        //     $(".harga_jasa").each(function() {
-        //         totalJasa += parseInt($(this).val());
-        //     });
-        //     // total = $('#TOTAL').val();
-        //     // total = parseInt(total) + parseInt(totalJasa);
-        //     $('#TOTAL_JASA').val(totalJasa + biayaTambahan + diskon);
-        //     hitungTotalAll();
-        //     e.preventDefault();
-        // });
 
         window.hitungTotalAll = function()
         {

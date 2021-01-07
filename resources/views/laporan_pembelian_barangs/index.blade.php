@@ -1,58 +1,47 @@
 @extends('layouts.app')
-​
+
 @section('content')
     <div class="container-fluid">
         <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Laporan Pembelian Barang</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active">Laporan Pembelian Barang</li>
-                    </ol>
-                </div>
+            <div class="col-sm-8">
+                <h1 class="m-0 text-dark">Laporan Pembelian Barang</h1>
+            </div>
+            <div class="col-sm-8">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                    <li class="breadcrumb-item active">Laporan Pembelian Barang</li>
+                </ol>
             </div>
         </div>
-​
-        <section class="content" id="dw">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                            @slot('title')
-                            Filter Transaksi
-                            @endslot
-                            <form action="{{ route('laporan_pembelian_barangs.index') }}" method="get">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="">Mulai Tanggal</label>
-                                            <input type="date" name="start_date" 
-                                                class="form-control {{ $errors->has('start_date') ? 'is-invalid':'' }}"
-                                                id="start_date"
-                                                value="{{ request()->get('start_date') }}"
-                                                >
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">Sampai Tanggal</label>
-                                            <input type="date" name="end_date" 
-                                                class="form-control {{ $errors->has('end_date') ? 'is-invalid':'' }}"
-                                                id="end_date"
-                                                value="{{ request()->get('end_date') }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <button class="btn btn-primary btn-sm">Cari</button>
-                                        </div>
-                                    </div>
-​
+    </div>
+    <section class="content" id="dw">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    @slot('title')
+                    Filter Transaksi
+                    @endslot
+                    <form action="{{ route('laporan_pembelian_barangs.index') }}" method="get">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Mulai Tanggal</label>
+                                    <input type="date" name="start_date" class="form-control {{ $errors->has('start_date') ? 'is-invalid':'' }}" id="start_date" value="{{ request()->get('start_date') }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Sampai Tanggal</label>
+                                    <input type="date" name="end_date" class="form-control {{ $errors->has('end_date') ? 'is-invalid':'' }}" id="end_date" value="{{ request()->get('end_date') }}">
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary btn-sm">Cari</button>
+                                </div>
+                            </div>
+
                             @slot('footer')
-​
                             @endslot
-                       
-                    </div>
-                    
-                    <div class="col-md-12">
-                     
+                        </div>
+                
+                        <div class="col-md-12">                    
                             @slot('title')
                             Data Transaksi
                             @endslot
@@ -65,7 +54,6 @@
                                             <th>Tgl Pembelian</th>
                                             <th>Keterangan</th>
                                             <th>Total</th>
-                                            {{-- <th>Action</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -101,17 +89,16 @@
                                     </tbody>
                                 </table>
                             </div>
-                            @slot('footer')
-​
-                            @endslot
-                        
-                    </div>
+                        @slot('footer')
+                        @endslot                    
+                        </div>
+                    </form>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 @endsection
-​
+
 @section('js')
     <script>
         $('#start_date').datepicker({
@@ -125,4 +112,3 @@
         });
     </script>
 @endsection
-

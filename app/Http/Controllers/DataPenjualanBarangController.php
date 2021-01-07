@@ -14,6 +14,7 @@ use App\Models\DataKasir;
 use App\Models\DataPelanggan;
 use App\Models\DataBarang;
 use App\Models\DataPenjualanBarang;
+use App\Models\DetailPenjualanBarang;
 use DB;
 use Yajra\Datatables\Datatables;
 use PDF;
@@ -87,7 +88,7 @@ class DataPenjualanBarangController extends AppBaseController
             $input['TOTAL_BERSIH'] = str_replace('.','', $input['TOTAL_BERSIH']);
             $dataPenjualanBarang = $this->dataPenjualanBarangRepository->create($input);
             foreach ($input['id_barang'] as $key => $row) {
-                $detail_penjualan_barang = new \App\Models\Detail_Penjualan_Barang();
+                $detail_penjualan_barang = new \App\Models\DetailPenjualanBarang();
                 $barang = DataBarang::where('ID_BARANG', $input['id_barang'][$key])->first();
                 $detail_penjualan_barang->ID_TRANSAKSI_PENJUALAN = $dataPenjualanBarang->ID_TRANSAKSI_PENJUALAN;
                 $detail_penjualan_barang->ID_BARANG = $barang->ID_BARANG;
@@ -124,9 +125,7 @@ class DataPenjualanBarangController extends AppBaseController
      */
     public function show($id)
     {
-        // $dataPenjualanBarang = $this->dataPenjualanBarangRepository->findWithoutFail($id);
         $dataPenjualanBarang = $this->dataPenjualanBarangRepository->with('detailPenjualanBarang')->findWithoutFail($id);
-        // dd($dataPenjualanBarang);
 
         if (empty($dataPenjualanBarang)) {
             Flash::error('Data Penjualan Barang not found');
@@ -208,17 +207,6 @@ class DataPenjualanBarangController extends AppBaseController
 
         return redirect(route('dataPenjualanBarangs.index'));
     }
-
-    // public function printnota($id) {
-    //     $dataPenjualanBarang = $this->dataPenjualanBarangRepository->findWithoutFail($id);
-
-    //     if (empty($dataPenjualanBarang)) {
-    //         Flash::error('Penjualan not found');
-    //         return redirect(route('data_penjualan_barang.index'));
-    //     }
-
-    //     return view('data_penjualan_barang.printnota', compact('data_penjualan_barang'));
-    // }
 
     public function print($id) {
         $dataPenjualanBarang = $this->dataPenjualanBarangRepository->findWithoutFail($id);

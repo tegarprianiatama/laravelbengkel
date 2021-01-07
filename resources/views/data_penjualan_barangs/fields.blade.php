@@ -1,3 +1,9 @@
+<!-- Id Pelanggan Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('ID_PELANGGAN', 'Pelanggan:') !!}
+    {!! Form::select('ID_PELANGGAN', $datapelanggan, null, ['class' => 'form-control select-pelanggan','placeholder'=>'Pilih Pelanggan']) !!}
+</div>
+
 <!-- Id Kasir Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('ID_KASIR', 'Kasir:') !!}
@@ -16,13 +22,6 @@
     </select>
     {!! Form::text('', $NAMA_KASIR, ['class' => 'form-control', 'readonly' => 'true']) !!}
     {!! Form::hidden('ID_KASIR', $ID_KASIR, ['class' => 'form-control', 'readonly' => 'true']) !!}
-</div>
-
-<!-- Id Pelanggan Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('ID_PELANGGAN', 'Pelanggan:') !!}
-    {{-- {!! Form::select('ID_PELANGGAN', $datapelanggan, null, ['class' => 'form-control', 'placeholder' => 'Pilih Pelanggan']) !!} --}}
-    {!! Form::select('ID_PELANGGAN', $datapelanggan, null, ['class' => 'form-control select-pelanggan','placeholder'=>'Pilih Pelanggan']) !!}
 </div>
 
 <!-- Tgl Penjualan Field -->

@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\Detail_Penjualan_Barang;
+use App\Models\DetailPenjualanBarang;
 
-class UpdateDetail_Penjualan_BarangRequest extends FormRequest
+class UpdateDetailPenjualanBarangRequest extends FormRequest
 {
 
     /**
@@ -25,6 +25,6 @@ class UpdateDetail_Penjualan_BarangRequest extends FormRequest
      */
     public function rules()
     {
-        return Detail_Penjualan_Barang::$rules;
+        return DetailPenjualanBarang::$rules;
     }
 }

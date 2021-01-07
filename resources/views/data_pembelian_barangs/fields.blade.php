@@ -1,7 +1,7 @@
 <!-- Id Supplier Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('ID_SUPPLIER', 'Supplier:') !!}
-    {!! Form::select('ID_SUPPLIER', $datasupplier, null, ['class' => 'form-control select-supplier','placeholder'=>'Pilih Supplier']) !!}
+    {!! Form::select('ID_SUPPLIER', $datasupplier, null, ['class' => 'form-control select-supplier', 'placeholder'=>'Pilih Supplier']) !!}
 </div>
 
 <!-- Tgl Pembelian Field -->
@@ -36,8 +36,7 @@
 
 <div class="col-md-2">
     {!! Form::label('Barang Baru', 'Tambah Barang Baru:') !!}<br>
-    <a onclick="openInNewTab('http://localhost:8000/dataBarangs/create')" id="MyButton" class="btn btn-sm btn-info glyphicon glyphicon-plus"></a>{{-- <space> <<>> </space>
-    <a id="btn-refresh" class="btn btn-sm btn-success glyphicon glyphicon-refresh"></a> --}}
+    <a onclick="openInNewTab({!! route('dataBarangs.create') !!})" id="MyButton" class="btn btn-sm btn-info glyphicon glyphicon-plus"></a>
 </div>
 <!-- Total Field -->
 
@@ -62,7 +61,7 @@
     </div>
     <div class="col-md-2">
         {!! Form::number('_harga_baru', 0, ['class' => 'form-control','id'=>'HARGA_BARU','placeholder'=>'Harga','autocomplete'=>'off', 'placeholder'=>'Harga Baru']) !!}
-        <h7>*Harga Baru</h7>
+        <small><i style="color:red;">*Harga Baru</i></small>
     </div>
     <div class="col-md-2">
         {!! Form::text('_qty', null, ['class' => 'form-control','id'=>'qty','placeholder'=>'Jumlah','autocomplete'=>'off']) !!}
@@ -75,16 +74,6 @@
 
 <div class="form-group col-md-12">
     <h4>Daftar Pembelian</h4>
-    <!-- <div class="row" style="border-bottom: 1px solid #eeeeee;margin-bottom: 15px;padding-bottom: 5px;">
-        <div class="col-md-1">No</div>
-        <div class="col-md-3">Nama Barang</div>
-        <div class="col-md-2">Harga</div>
-        <div class="col-md-2">Qty</div>
-        <div class="col-md-2">Subtotal</div>
-    </div>
-    <div id="daftar-penjualan">
-    
-    </div> -->
     <table class="table table-responsive table-hover table-bordered" style="width: 100%">
         <thead>
             <tr>
@@ -95,7 +84,7 @@
                 <th>Harga Baru</th>
                 <th>Qty</th>
                 <th>Subtotal</th>
-                <th>Total</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody id="daftar-pembelian">

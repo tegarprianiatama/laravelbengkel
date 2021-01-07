@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use App\Models\DataBarang;
 use App\Models\DataSupplier;
 use Flash;
-use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use Yajra\Datatables\Datatables;
 
@@ -34,12 +33,11 @@ class DataBarangController extends AppBaseController
     {
         if ($request->ajax()) {
             $dataBarangs = $this->dataBarangRepository->with(['dataSupplier'])->all();
-            // $dataBarangs = $this->dataBarangRepository->all();
             return DataTables::of($dataBarangs)
                 ->addColumn('action', 'data_barangs.datatables_action')
                 ->addIndexColumn()
                 ->setRowClass(function ($data) {
-                return $data->STOK <= 5 ? 'alert-warning' : '';
+                return $data->STOK <= 5 ? 'alert-danger' : '';
                 })
                 ->setRowAttr([
                 'color' => 'red',

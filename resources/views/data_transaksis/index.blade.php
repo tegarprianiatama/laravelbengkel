@@ -1,4 +1,15 @@
 @extends('layouts.app')
+@section('css')
+    @include('layouts.datatables_css')
+@endsection
+
+@section('css')
+    <style type="text/css">
+        table tfoot {
+            display: table-header-group;
+        }
+    </style>
+@endsection
 
 @section('content')
     <section class="content-header">
@@ -45,18 +56,8 @@
                         {data: 'BIAYA_TAMBAHAN', name: 'BIAYA_TAMBAHAN', orderable: false},
                         {data: 'TOTAL_DISKON', name: 'TOTAL_DISKON'},
                         {data: 'TOTAL', name: 'TOTAL'},
-                        {data: 'action', name: 'murids.action', orderable: false, searchable: false}
+                        {data: 'action', name: 'dataTransaksis.action', orderable: false, searchable: false}
                     ],
-                    initComplete: function () {
-                        this.api().columns().every(function () {
-                            var column = this;
-                            var input = document.createElement("input");
-                            $(input).appendTo($(column.footer()).empty())
-                            .on('change', function () {
-                                column.search($(this).val(), false, false, true).draw();
-                            });
-                        });
-                    },
                     scrollX : true,
                 });
             });

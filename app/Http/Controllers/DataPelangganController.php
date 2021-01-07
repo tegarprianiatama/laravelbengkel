@@ -6,10 +6,11 @@ use App\Http\Requests\CreateDataPelangganRequest;
 use App\Http\Requests\UpdateDataPelangganRequest;
 use App\Repositories\DataPelangganRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\DataPelanggan;
 use Illuminate\Http\Request;
 use Flash;
-use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use Yajra\Datatables\Datatables;
 
 class DataPelangganController extends AppBaseController
 {
@@ -29,11 +30,16 @@ class DataPelangganController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $this->dataPelangganRepository->pushCriteria(new RequestCriteria($request));
-        $dataPelanggans = $this->dataPelangganRepository->all();
-
-        return view('data_pelanggans.index')
-            ->with('dataPelanggans', $dataPelanggans);
+        if($request->ajax()) {
+           $dataPelanggans = DataPelanggan::orderBy('created_at', 'desc')->get();
+           return DataTables::of($dataPelanggans)
+           ->addColumn('action', function ($row) {
+               return view('data_pelanggans.datatables_actions', compact('row'));
+           })
+           ->addIndexColumn()
+           ->make(true);
+        }
+        return view('data_pelanggans.index');
     }
 
     /**

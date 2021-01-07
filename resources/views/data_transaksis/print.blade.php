@@ -14,9 +14,9 @@
 		<table style="width: 100%">
             <tr>
                 <td style="width: 230px; height: 130px">
-                    <img src="{{public_path('images/jepun.jpeg')}}" style="width: 80%; height: 100%">
+                    <img src="{{public_path('image/jepun.jpeg')}}" style="width: 80%; height: 100%">
                 </td>
-                <td class="text-right" style="font-size: 12px;">
+                <td class="text-left" style="font-size: 12px;">
                     <h4><b>BENGKEL KEMBANG JEPUN MOTOR TULUNGAGUNG</b></h4>
             		<p>Jalan Pahlawan No 326</p>
             		<p>Telpon : 0355 - 323532</p>
@@ -31,13 +31,11 @@
 	<table style="text-align: center; width: 100%">
 		<tr>
 			<td style="width: 50%">
-				{{-- <p>Penjualan</p> --}}
 				<p>Tanggal Penjualan  : {{$dataTransaksi->created_at}}</p>
-				<p>Nomer Nota 		: {{$dataTransaksi->ID_DATA_TRANSAKSI}} </p>
-				<p>Pegawai 			: {{$dataTransaksi->dataKasir->NAMA_KASIR}} </p>
+				<p>Nomer Nota 		: {{$dataTransaksi->ID_DATA_TRANSAKSI}}</p>
+				<p>Pegawai 			: {{$dataTransaksi->dataKasir->NAMA_KASIR}}</p>
 			</td>
 			<td style="width: 50%;">
-                {{-- <p>Pelanggan</p> --}}
 				<p>Nama 	: {{$dataTransaksi->dataPelanggan->NAMA}}</p>
                 <p>Motor    : {{$dataTransaksi->dataMotorPelanggan->NAMA}}</p>
                 <p>No Pol   : {{$dataTransaksi->dataMotorPelanggan->NO_POL}}</p>
@@ -66,7 +64,6 @@
                 Hanya Barang
                 @endif</td>
             <td class="text-right"></td>
-            <!-- <td class="text-right">0</td> -->
             <td class="text-right">@if($dataTransaksi->dataJasaServis)
                 {{numberRp($dataTransaksi->dataJasaServis->HARGA)}}
                 @else
@@ -79,7 +76,6 @@
                 <td>{{$item->dataBarang->KODE_BARANG}}</td>
                 <td>{{$item->dataBarang->NAMA_BARANG}}</td>
                 <td>{{$item->QTY}}</td>
-                {{-- <td>{{$item->diskon}}</td> --}}
                 <td class="text-right">{{numberRp($item->SUB_TOTAL)}}</td>
             </tr>
         @endforeach
@@ -93,13 +89,6 @@
             <td  class="text-left" style="border-top: 2px solid black;">Diskon Total : </td>
             <td class="text-right" style="border-top: 2px solid black;">{{$dataTransaksi->TOTAL_DISKON}}</td>
         </tr>
-        {{-- <tr>
-            <td></td><td></td>
-            <td class="text-left"><b>Jenis Pembayaran : {{$transaksi->jenisbayar}}</b></td>
-            <td></td>
-            <td  class="text-left" style="border-top: 2px solid black;"><b>Total Bayar: </b></td>
-            <td style="border-top: 2px solid black;" class="text-right"><b>{{$transaksi->totalbersih}}</b></td>
-        </tr> --}}
         <tr>
             <td></td>
             <td class="text-left" style="border-top: 2px solid black;"><b>Jumlah Tunai :</b></td>

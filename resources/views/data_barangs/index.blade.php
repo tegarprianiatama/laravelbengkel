@@ -4,13 +4,11 @@
 @endsection
 
 @section('css')
-
     <style type="text/css">
         table tfoot {
             display: table-header-group;
         }
     </style>
-
 @endsection
 
 @section('content')
@@ -35,21 +33,6 @@
         
         </div>
     </div>
-    {{-- <table class="table" id="table-barang">
-        <thead>
-            <tr>
-                <th>Kode Barang</th>
-                <th>Nama Barang</th>
-                <th>Stok</th>
-                <th>Satuan</th>
-                <th>Harga Modal</th>
-                <th>Harga Jual</th>
-                <th>Jenis</th>
-                <th>Biaya Pemasangan</th>
-                <th>Keterangan</th>
-            </tr>
-        </thead>
-    </table> --}}
 @endsection
 @section('scripts')
     @include('layouts.datatables_js_client')
@@ -73,18 +56,9 @@
                         {data: 'JENIS', name: 'JENIS'},
                         {data: 'BIAYA_PEMASANGAN', name: 'BIAYA_PEMASANGAN', orderable: false},
                         {data: 'KETERANGAN', name: 'KETERANGAN'},
-                        {data: 'action', name: 'murids.action', orderable: false, searchable: false}
+                        {data: 'action', name: 'dataBarangs.action', orderable: false, searchable: false}
                     ],
-                    initComplete: function () {
-                        this.api().columns().every(function () {
-                            var column = this;
-                            var input = document.createElement("input");
-                            $(input).appendTo($(column.footer()).empty())
-                            .on('change', function () {
-                                column.search($(this).val(), false, false, true).draw();
-                            });
-                        });
-                    },
+                    
                     scrollX : true,
                 });
             });

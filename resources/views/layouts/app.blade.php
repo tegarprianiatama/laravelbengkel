@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>E-Bengkel</title>
+    <title>Bengkel</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
     <!-- Bootstrap 3.3.7 -->
@@ -29,22 +29,22 @@
     @yield('css')
 </head>
 
-<body class="skin-blue sidebar-mini">
+<body class="skin-green sidebar-mini">
 @if (!Auth::guest())
     <div class="wrapper">
         <!-- Main Header -->
         <header class="main-header">
 
             <!-- Logo -->
-            <a href="#" class="logo">
-                <b>E-BENGKEL</b>
+            <a href="" class="logo">
+                <b>Admin Panel</b>
             </a>
 
             <!-- Header Navbar -->
             <nav class="navbar navbar-static-top" role="navigation">
                 <!-- Sidebar toggle button-->
                 <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-                    <span class="sr-only">Toggle navigation</span>
+                    <span class="sr-only">BENGKEL KEMBANG JEPUN MOTOR</span>
                 </a>
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
@@ -54,16 +54,15 @@
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- The user image in the navbar-->
-                                {{-- <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg"
-                                     class="user-image" alt="User Image"/> --}}
+                                <img src="{!! asset('image/users.png') !!}" class="user-image"/>
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                                 <span class="hidden-xs">{!! Auth::user()->name !!}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    {{-- <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg"
-                                         class="img-circle" alt="User Image"/> --}}
+                                    <img src="{!! asset('image/users.png') !!}"
+                                         class="img-circle"/>
                                     <p>
                                         {!! Auth::user()->name !!}
                                     </p>
@@ -107,7 +106,7 @@
 
     </div>
 @else
-    <nav class="navbar navbar-default navbar-static-top">
+    {{-- <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
 
@@ -150,8 +149,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    @endif
+    </div> --}}
+@endif
 
     <!-- jQuery 3.1.1 -->
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>

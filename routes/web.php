@@ -25,6 +25,8 @@ Route::get('data-barang/{id}', 'DataBarangController@find');
 
 Route::get('data-jasa_servis/{id}', 'DataJasaServisController@find');
 
+Route::resource('dataPelanggans', 'DataPelangganController');
+
 Route::resource('dataJasaServis', 'DataJasaServisController');
 
 Route::resource('dataKasirs', 'DataKasirController');
@@ -46,8 +48,6 @@ Route::prefix('dataMotorPelanggans')->group(function() {
 	});	
 });
 
-Route::resource('dataPelanggans', 'DataPelangganController');
-
 Route::resource('dataSuppliers', 'DataSupplierController');
 
 Route::resource('dataTransaksis', 'DataTransaksiController');
@@ -60,7 +60,7 @@ Route::resource('dataPenjualanBarangs', 'DataPenjualanBarangController');
 
 Route::resource('detailPembelianBarangs', 'DetailPembelianBarangController');
 
-Route::resource('detailPenjualanBarangs', 'Detail_Penjualan_BarangController');
+Route::resource('detailPenjualanBarangs', 'DetailPenjualanBarangController');
 
 Route::get('/', 'HomeController@index');
 
@@ -71,8 +71,6 @@ Route::get('dataPenjualanBarangs/print/{id}', 'DataPenjualanBarangController@pri
 Route::get('dataTransaksis/print/{id}', 'DataTransaksiController@print')->name('dataTransaksis.print');
 
 Route::get('dataPembelianBarangs/print/{id}', 'DataPembelianBarangController@print')->name('dataPembelianBarangs.print');
-
-// Route::get('dataPenjualanBarangs/printnota/{id}', 'DataPenjualanBarangController@printnota')->name('dataPenjualanBarangs.printnota');
 
 Route::resource('laporanPenjualanBarangs', 'LaporanPenjualanBarangController');
 

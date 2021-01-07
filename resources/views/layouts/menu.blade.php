@@ -2,44 +2,8 @@
 
 <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Beranda</li>
-        {{-- <li><a href="{{ url('/') }}"><i class="fa fa-fw fa-home"></i> Dashboard</span></a></li> --}}
-        <li><a href="{!! url('/') !!}"><i class="fa fa fa-home"></i><span>Home</span></a></li>
+        <li><a href="{!! url('/') !!}"><i class="fa fa fa-home"></i><span>Home</span></a></li>    
 
-{{--      <li class="treeview">
-          <a href="#">
-            <i class="fa fa-share"></i> <span>Multilevel</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-            <li class="treeview">
-              <a href="#"><i class="fa fa-circle-o"></i> Level One
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                <li class="treeview">
-                  <a href="#"><i class="fa fa-circle-o"></i> Level Two
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-          </ul>
-    </li> --}}      
-
-{{-- Admin --}}
 @if(auth()->user()->role->guard_name == 'admin')
 <li class="{{ Request::is('dataKasirs*') ? 'active' : '' }}">
     <a href="{!! route('dataKasirs.index') !!}"><i class="fa fa-address-card-o"></i><span>Kasir</span></a>
@@ -51,7 +15,7 @@
 </li>
 
 </section><li class="{{ Request::is('kategoriMotors*') ? 'active' : '' }}">
-    <a href="{!! route('kategoriMotors.index') !!}"><i class="fa fa-list-alt"></i><span>Kategori Motor</span></a>
+    <a href="{!! route('kategoriMotors.index') !!}"><i class="fa fa-list-alt"></i><span>Kategori</span></a>
 </li>
 
 <li class="{{ Request::is('dataJasaServis*') ? 'active' : '' }}">
@@ -76,7 +40,6 @@
 
 <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Transaksi</li>
-        {{-- <li><a href="{!! route('dataTransaksis.index') !!}"><i class="fa fa-fax"></i><span>Transaksi Servis</span></a></li> --}}
 
 <li class="{{ Request::is('dataTransaksis*') ? 'active' : '' }}">
     <a href="{!! route('dataTransaksis.index') !!}"><i class="fa fa-fax"></i><span>Transaksi Servis</span></a>
@@ -113,7 +76,6 @@
 @if(auth()->user()->role->guard_name == 'admin')
 <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Laporan</li>
-      {{--   <li><a href="{!! route('dataTransaksis.index') !!}"><i class="fa fa-fax"></i><span>Transaksi Servis</span></a></li> --}}
 
 <li class="{{ Request::is('laporanPenjualanBarangs*') ? 'active' : '' }}">
     <a href="{!! route('laporanPenjualanBarangs.index') !!}"><i class="fa fa-clipboard"></i><span>Laporan Penjualan Barang</span></a>
@@ -128,12 +90,11 @@
 </li>
 @endif
 
-{{-- @if(auth()->user()->role->guard_name == 'admin')
+@if(auth()->user()->role->guard_name == 'admin')
 <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Manajemen User</li>
 
 <li class="{{ Request::is('Roles*') ? 'active' : '' }}">
     <a href="{!! route('roles.index') !!}"><i class="fa fa-user"></i><span>Role</span></a>
 </li>
-@endif --}}
-
+@endif

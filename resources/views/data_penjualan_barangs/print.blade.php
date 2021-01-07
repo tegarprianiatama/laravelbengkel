@@ -14,9 +14,9 @@
 		<table style="width: 100%">
             <tr>
                 <td style="width: 230px; height: 130px">
-                    <img src="{{public_path('images/jepun.jpeg')}}" style="width: 80%; height: 100%">
+                    <img src="{{public_path('image/jepun.jpeg')}}" style="width: 80%; height: 100%">
                 </td>
-                <td class="text-right" style="font-size: 12px;">
+                <td class="text-left" style="font-size: 12px;">
                     <h4><b>BENGKEL KEMBANG JEPUN MOTOR TULUNGAGUNG</b></h4>
             		<p>Jalan Pahlawan No 326</p>
             		<p>Telpon : 0355 - 323532</p>

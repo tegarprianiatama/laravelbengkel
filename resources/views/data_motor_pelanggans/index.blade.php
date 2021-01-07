@@ -1,4 +1,15 @@
 @extends('layouts.app')
+@section('css')
+    @include('layouts.datatables_css')
+@endsection
+
+@section('css')
+    <style type="text/css">
+        table tfoot {
+            display: table-header-group;
+        }
+    </style>
+@endsection
 
 @section('content')
     <section class="content-header">
@@ -40,18 +51,8 @@
                         {data: 'NO_POL', name: 'NO_POL'},
                         {data: 'ISI_SILIDER', name: 'ISI_SILIDER', orderable: false, searchable: false},
                         {data: 'kategori_motor.NAMA'},
-                        {data: 'action', name: 'murids.action', orderable: false, searchable: false}
+                        {data: 'action', name: 'dataMotorPelanggans.action', orderable: false, searchable: false}
                     ],
-                    initComplete: function () {
-                        this.api().columns().every(function () {
-                            var column = this;
-                            var input = document.createElement("input");
-                            $(input).appendTo($(column.footer()).empty())
-                            .on('change', function () {
-                                column.search($(this).val(), false, false, true).draw();
-                            });
-                        });
-                    },
                     scrollX : true,
                 });
             });

@@ -79,13 +79,13 @@
             };
         });
         $('#btn-tambah').on('click',function(e){
-            var hargaOke = 0;
+            var hargaOk = 0;
             if ($('#HARGA_BARU').val() == 0) {
-                hargaOke = $('#HARGA_MODAL').val();
+                hargaOk = $('#HARGA_MODAL').val();
             }else{
-                hargaOke = $('#HARGA_BARU').val();
+                hargaOk = $('#HARGA_BARU').val();
             }
-            $('#subtotal').val(parseInt(hargaOke)*parseInt($('#qty').val()));
+            $('#subtotal').val(parseInt(hargaOk)*parseInt($('#qty').val()));
             $("#daftar-pembelian").append('<tr class="sub-'+i+'">'+
                 '<td>'+i+'</td>'+
                 '<td><input type="hidden" readonly class="form-control" name="id_barang[]" value="'+$('#ID_BARANG').val()+'">'+
@@ -135,21 +135,7 @@
         });
     });
 
-    // $('#btn-bayar').on('click',function(e){
-    //         // var totalbayar = parseInt($('.total').val()) - parseInt($('#diskon_keseluruhan').val());
-    //         // $('#total_bayar').val(totalbayar);
-    //         // var hargaTtl = parseInt($('.TOTAL').val());
-    //         var diskonTtl = hargaTtl * parseInt($('#DISKON').val()) /100;
-    //         var totalbayar = hargaTtl - diskonTtl;
-    //         $('#TOTAL_BAYAR').val(totalbayar);
-    //     });
-
-    //     $("#bayar").on("change", function(e) {
-    //        var kembalian = parseInt(e.target.value) - parseInt($('#TOTAL_BAYAR').val());
-    //        $('#KEMBALIAN').val(parseInt(KEMBALIAN));
-    //    });
-
-     function create() {
+    function create() {
         
         $('#TOTAL_BERSIH').val( parseInt($('#TOTAL').val()) - parseInt($('#DISKON').val()) ).trigger('input');
 

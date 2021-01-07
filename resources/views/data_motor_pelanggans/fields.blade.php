@@ -1,12 +1,14 @@
 <!-- Id Pelanggan Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('ID_PELANGGAN', 'Pelanggan:') !!}
-    {!! Form::text('ID_PELANGGAN', isset($dataPelanggan) ? $dataPelanggan->NAMA : '', ['class' => 'form-control']) !!}
+    {!! Form::label('ID_PELANGGAN', 'Nama Pelanggan :') !!}
+    {!! Form::hidden('ID_PELANGGAN', isset($dataPelanggan) ? $dataPelanggan->ID_PELANGGAN : null, ['class' => 'form-control', 'readonly' => 'true']) !!}
+    <br>
+    {{ isset($dataPelanggan) ? $dataPelanggan->NAMA : null, }}
 </div>
 
 <!-- Nama Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('NAMA', 'Nama Motor:') !!}
+    {!! Form::label('NAMA', 'Nama Motor :') !!}
     {!! Form::text('NAMA', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -24,8 +26,8 @@
 
 <!-- Kategori Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('KATEGORI_ID', 'Kategori:') !!}
-    {!! Form::select('KATEGORI_ID', $kategorimotor, null, ['class' => 'form-control', 'placeholder' => 'Pilih Kategori']) !!}
+    {!! Form::label('ID_KATEGORI', 'Kategori:') !!}
+    {!! Form::select('ID_KATEGORI', $kategorimotor, null, ['class' => 'form-control', 'placeholder' => 'Pilih Kategori']) !!}
 </div>
 
 <!-- Submit Field -->

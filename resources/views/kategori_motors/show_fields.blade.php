@@ -1,30 +1,30 @@
 <!-- Id Field -->
 <div class="form-group">
-    {!! Form::label('id', 'Id:') !!}
-    <p>{!! $kategoriMotor->id !!}</p>
+    {!! Form::label('ID_KATEGORI_MOTOR', 'No :') !!}
+    <p>{!! $kategoriMotor->ID_KATEGORI_MOTOR !!}</p>
 </div>
 
 <!-- Nama Field -->
 <div class="form-group">
-    {!! Form::label('NAMA', 'Nama:') !!}
+    {!! Form::label('NAMA', 'Nama :') !!}
     <p>{!! $kategoriMotor->NAMA !!}</p>
 </div>
 
 <!-- Keterangan Field -->
 <div class="form-group">
-    {!! Form::label('KETERANGAN', 'Keterangan:') !!}
+    {!! Form::label('KETERANGAN', 'Keterangan :') !!}
     <p>{!! $kategoriMotor->KETERANGAN !!}</p>
 </div>
 
 <!-- Created At Field -->
 <div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
+    {!! Form::label('created_at', 'Created At :') !!}
     <p>{!! $kategoriMotor->created_at !!}</p>
 </div>
 
 <!-- Updated At Field -->
 <div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
+    {!! Form::label('updated_at', 'Updated At :') !!}
     <p>{!! $kategoriMotor->updated_at !!}</p>
 </div>
 

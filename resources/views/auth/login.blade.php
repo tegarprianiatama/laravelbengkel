@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>E-Bengkel</title>
+    <title>Bengkel</title>
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -35,13 +35,13 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="{{ url('/home') }}"><b>E</b>-Bengkel</a>
+        <a href="{{ url('/home') }}">Aplikasi Pengelolaan Bengkel <b>Kembang Jepun Motor</b></a>
     </div>
 
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Silahkan login untuk masuk aplikasi</p>
-
+        <p class="login-box-msg">Silahkan Login Untuk Masuk Aplikasi
+        <img src="{!! asset('image/jepun.jpeg') !!}" style="width: 70%; height: 70%;"/></p>
         <form method="post" action="{{ url('/login') }}">
             {!! csrf_field() !!}
 
@@ -56,7 +56,7 @@
             </div>
 
             <div class="form-group has-feedback{{ $errors->has('password') ? ' has-error' : '' }}">
-                <input type="password" class="form-control" placeholder="Password" name="password">
+                <input type="password" class="form-control" name="password" placeholder="Password">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 @if ($errors->has('password'))
                     <span class="help-block">
@@ -69,20 +69,22 @@
                 <div class="col-xs-8">
                     <div class="checkbox icheck">
                         <label>
-                            {{-- <input type="checkbox" name="remember"> Remember Me --}}
+                            <input type="checkbox" name="remember"> Ingat saya
                         </label>
                     </div>
                 </div>
+                <div class="col-xs-8">
+                    <a href="{{ url('/password/reset') }}">Lupa Password</a><br>
+                </div>
                 <!-- /.col -->
                 <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Login</button>
                 </div>
                 <!-- /.col -->
             </div>
         </form>
 
-        {{-- <a href="{{ url('/password/reset') }}">I forgot my password</a><br>
-        <a href="{{ url('/register') }}" class="text-center">Register a new membership</a> --}}
+        {{-- <a href="{{ url('/register') }}" class="text-center">Register a new membership</a> --}}
 
     </div>
     <!-- /.login-box-body -->

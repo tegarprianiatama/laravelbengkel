@@ -1,4 +1,15 @@
 @extends('layouts.app')
+@section('css')
+    @include('layouts.datatables_css')
+@endsection
+
+@section('css')
+    <style type="text/css">
+        table tfoot {
+            display: table-header-group;
+        }
+    </style>
+@endsection
 
 @section('content')
     <section class="content-header">
@@ -45,7 +56,7 @@
                         // {data: 'JENIS', name: 'JENIS'},
                         // {data: 'BIAYA_PEMASANGAN', name: 'BIAYA_PEMASANGAN', orderable: false},
                         // {data: 'KETERANGAN', name: 'KETERANGAN'},
-                        {data: 'action', name: 'murids.action', orderable: false, searchable: false}
+                        {data: 'action', name: 'dataSuppliers.action', orderable: false, searchable: false}
                     ],
                     // initComplete: function () {
                     //     this.api().columns().every(function () {

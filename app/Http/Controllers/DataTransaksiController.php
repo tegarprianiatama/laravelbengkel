@@ -8,7 +8,6 @@ use App\Repositories\DataTransaksiRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
-use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Models\DataPelanggan;
 use App\Models\DataBarang;
@@ -40,29 +39,24 @@ class DataTransaksiController extends AppBaseController
      */
     public function index(Request $request)
     {
-        // $this->dataTransaksiRepository->pushCriteria(new RequestCriteria($request));
-        // $dataTransaksis = $this->dataTransaksiRepository->all();
+        
         if ($request->ajax()) {
-            // $dataTransaksis = $this->dataTransaksiRepository->with(['dataPelanggan','dataKasir','dataMekanik','dataMotorPelanggan','dataJasaServis',])->all();
             $dataTransaksis = DataTransaksi::orderBy('created_at', 'desc')->with(['dataPelanggan','dataKasir','dataMekanik','dataMotorPelanggan','dataJasaServis'])->get();
             return DataTables::of($dataTransaksis)
-                ->addColumn('action', 'data_transaksis.datatables_actions')
-                ->addIndexColumn()
-                ->editColumn('TGL_PENJUALAN', function ($dataTransaksi) {
-                    return $dataTransaksi->TGL_PENJUALAN ? with(new Carbon($dataTransaksi->TGL_PENJUALAN))->format('m/d/Y') : '';
-                })
-                ->addColumn('NAMA_JASA', function ($dataTransaksi) {
-                    if (!empty($dataTransaksi->dataJasaServis)) {
-                        return $dataTransaksi->dataJasaServis->NAMA_JASA;
+            ->addColumn('action', 'data_transaksis.datatables_actions')
+            ->addIndexColumn()
+            ->editColumn('TGL_PENJUALAN', function ($dataTransaksi) {
+                return $dataTransaksi->TGL_PENJUALAN ? with(new Carbon($dataTransaksi->TGL_PENJUALAN))->format('m/d/Y') : '';
+            })
+            ->addColumn('NAMA_JASA', function ($dataTransaksi) {
+                if (!empty($dataTransaksi->dataJasaServis)) {
+                    return $dataTransaksi->dataJasaServis->NAMA_JASA;
 
-                    } else {
-                        return 'Pembelian Barang + Pemasangan';
-                    }
-                })
-                // ->filterColumn('TGL_PENJUALAN', function ($query, $keyword) {
-                //     $query->whereRaw("DATE_FORMAT(TGL_PENJUALAN,'%m/%d/%Y') like ?", ["%$keyword%"]);
-                // })
-                ->make(true);
+                } else {
+                    return 'Pembelian Barang + Pemasangan';
+                }
+            })
+            ->make(true);
 
             }
 
@@ -124,7 +118,6 @@ class DataTransaksiController extends AppBaseController
 
         Flash::success('Data Transaksi saved successfully.');
 
-        // return redirect(route('dataTransaksis.index'));
         return redirect(route('dataTransaksis.show', ['dataTransaksi' => $result]));
     }
 
@@ -221,12 +214,13 @@ class DataTransaksiController extends AppBaseController
     public function find($id) {
         return DataJasaServis::find($id);
     }
+
     public function print($id) {
         $dataTransaksi = DataTransaksi::with(['detailTransaksis','dataPelanggan','dataKasir','dataMekanik','dataMotorPelanggan','dataJasaServis'])->where('ID_DATA_TRANSAKSI', $id)->first();
    
         $id = $dataTransaksi->ID_DATA_TRANSAKSI;
         $pdf = PDF::loadView('data_transaksis.print', compact('dataTransaksi', 'id'))->setPaper('A5', 'potrait');
-        return $pdf->stream('invoice.pdf');
+        return $pdf->stream('invoice-servis.pdf');
 
         if (empty($dataTransaksi)) {
             Flash::error('Penjualan not found');

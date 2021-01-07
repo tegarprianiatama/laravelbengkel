@@ -1,6 +1,6 @@
 <!-- Id Pelanggan Field -->
 <div class="form-group">
-    {!! Form::label('ID_PELANGGAN', 'Id Pelanggan:') !!}
+    {!! Form::label('ID_PELANGGAN', 'No Pelanggan:') !!}
     <p>{!! $dataPelanggan->ID_PELANGGAN !!}</p>
 </div>
 

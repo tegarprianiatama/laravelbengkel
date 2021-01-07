@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Kategori Motor
+            Data Kategori Motor
         </h1>
    </section>
    <div class="content">
@@ -11,7 +11,7 @@
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
-                   {!! Form::model($kategoriMotor, ['route' => ['kategoriMotors.update', $kategoriMotor->id], 'method' => 'patch']) !!}
+                   {!! Form::model($kategoriMotor, ['route' => ['kategoriMotors.update', $kategoriMotor->ID_KATEGORI_MOTOR], 'method' => 'patch']) !!}
 
                         @include('kategori_motors.fields')
 

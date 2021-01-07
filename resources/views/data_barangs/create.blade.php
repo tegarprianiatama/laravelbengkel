@@ -25,11 +25,9 @@
 @section('scripts')
 <script>
     $(document).ready(function() {
-        var i=1;
         $('.select-supplier').select2({
             theme: "bootstrap",
-            placeholder: 'Pilih Supplier'
         });
-    }
+    });
 </script>
 @endsection

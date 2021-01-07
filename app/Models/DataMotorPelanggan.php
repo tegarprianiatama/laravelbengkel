@@ -39,7 +39,7 @@ class DataMotorPelanggan extends Model
         'NAMA',
         'NO_POL',
         'ISI_SILIDER',
-        'KATEGORI_ID'
+        'ID_KATEGORI'
     ];
 
     /**
@@ -49,11 +49,11 @@ class DataMotorPelanggan extends Model
      */
     protected $casts = [
         'ID_DETAIL_MOTOR' => 'integer',
-        'ID_PELANGGAN' => 'integer',
+        'ID_PELANGGAN' => 'string',
         'NAMA' => 'string',
         'NO_POL' => 'string',
         'ISI_SILIDER' => 'integer',
-        'KATEGORI_ID' => 'string'
+        'ID_KATEGORI' => 'string'
     ];
 
     /**
@@ -66,7 +66,7 @@ class DataMotorPelanggan extends Model
         'NAMA' => 'required',
         // 'NO_POL' => 'required|unique:data_motor_pelanggan',
         'ISI_SILIDER' => 'required',
-        'KATEGORI_ID' => 'required'
+        'ID_KATEGORI' => 'required'
     ];
 
     /**
@@ -79,7 +79,7 @@ class DataMotorPelanggan extends Model
 
     public function kategoriMotor()
     {
-        return $this->belongsTo(\App\Models\KategoriMotor::class, 'KATEGORI_ID');
+        return $this->belongsTo(\App\Models\KategoriMotor::class, 'ID_KATEGORI', 'ID_KATEGORI_MOTOR');
     }
 
     /**

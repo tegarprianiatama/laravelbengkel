@@ -14,9 +14,9 @@
 		<table style="width: 100%">
             <tr>
                 <td style="width: 230px; height: 130px">
-                    <img src="{{public_path('images/jepun.jpeg')}}" style="width: 80%; height: 100%">
+                    <img src="{{public_path('image/jepun.jpeg')}}" style="width: 80%; height: 100%">
                 </td>
-                <td class="text-right" style="font-size: 12px;">
+                <td class="text-left" style="font-size: 12px;">
                     <h4><b>BENGKEL KEMBANG JEPUN MOTOR TULUNGAGUNG</b></h4>
             		<p>Jalan Pahlawan No 326</p>
             		<p>Telpon : 0355 - 323532</p>
@@ -34,7 +34,6 @@
 				{{-- <p>Pembelian</p> --}}
 				<p>Tanggal Pembelian  : {{$dataPembelianBarang->created_at}}</p>
 				<p>Nomer Nota 		: {{$dataPembelianBarang->ID_DATA_PEMBELIAN_BARANG}} </p>
-				<!-- <p>Pegawai 			: {{-- {{$dataPenjualanBarang->dataKasir->NAMA_KASIR}} --}} </p> -->
 			</td>
 			<td style="width: 50%;">
                 {{-- <p>Supplier</p> --}}
@@ -61,7 +60,6 @@
                 <td>{{$item->dataBarang->KODE_BARANG}}</td>
                 <td>{{$item->dataBarang->NAMA_BARANG}}</td>
                 <td>{{$item->QTY}}</td>
-                {{-- <td>{{$item->diskon}}</td> --}}
                 <td class="text-right">{{$item->SUBTOTAL}}</td>
             </tr>
         @endforeach
@@ -75,13 +73,6 @@
             <td  class="text-left" style="border-top: 2px solid black;">Diskon Total : </td>
             <td class="text-right" style="border-top: 2px solid black;">{{$dataPembelianBarang->DISKON}}</td>
         </tr>
-        {{-- <tr>
-            <td></td><td></td>
-            <td class="text-left"><b>Jenis Pembayaran : {{$pembelian->jenisbayar}}</b></td>
-            <td></td>
-            <td  class="text-left" style="border-top: 2px solid black;"><b>Total Bayar: </b></td>
-            <td style="border-top: 2px solid black;" class="text-right"><b>{{$pembelian->totalbersih}}</b></td>
-        </tr> --}}
         <tr>
             <td></td>
             <td class="text-left" style="border-top: 2px solid black;"><b>Jumlah Tunai :</b></td>

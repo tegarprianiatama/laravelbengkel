@@ -2,27 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateDetail_Penjualan_BarangRequest;
-use App\Http\Requests\UpdateDetail_Penjualan_BarangRequest;
-use App\Repositories\Detail_Penjualan_BarangRepository;
+use App\Http\Requests\CreateDetailPenjualanBarangRequest;
+use App\Http\Requests\UpdateDetailPenjualanBarangRequest;
+use App\Repositories\DetailPenjualanBarangRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
-class Detail_Penjualan_BarangController extends AppBaseController
+class DetailPenjualanBarangController extends AppBaseController
 {
-    /** @var  Detail_Penjualan_BarangRepository */
+    /** @var  DetailPenjualanBarangRepository */
     private $detailPenjualanBarangRepository;
 
-    public function __construct(Detail_Penjualan_BarangRepository $detailPenjualanBarangRepo)
+    public function __construct(DetailPenjualanBarangRepository $detailPenjualanBarangRepo)
     {
         $this->detailPenjualanBarangRepository = $detailPenjualanBarangRepo;
     }
 
     /**
-     * Display a listing of the Detail_Penjualan_Barang.
+     * Display a listing of the DetailPenjualanBarang.
      *
      * @param Request $request
      * @return Response
@@ -32,28 +32,28 @@ class Detail_Penjualan_BarangController extends AppBaseController
         $this->detailPenjualanBarangRepository->pushCriteria(new RequestCriteria($request));
         $detailPenjualanBarangs = $this->detailPenjualanBarangRepository->all();
 
-        return view('detail__penjualan__barangs.index')
+        return view('detail_penjualan_barangs.index')
             ->with('detailPenjualanBarangs', $detailPenjualanBarangs);
     }
 
     /**
-     * Show the form for creating a new Detail_Penjualan_Barang.
+     * Show the form for creating a new DetailPenjualanBarang.
      *
      * @return Response
      */
     public function create()
     {
-        return view('detail__penjualan__barangs.create');
+        return view('detail_penjualan_barangs.create');
     }
 
     /**
-     * Store a newly created Detail_Penjualan_Barang in storage.
+     * Store a newly created DetailPenjualanBarang in storage.
      *
-     * @param CreateDetail_Penjualan_BarangRequest $request
+     * @param CreateDetailPenjualanBarangRequest $request
      *
      * @return Response
      */
-    public function store(CreateDetail_Penjualan_BarangRequest $request)
+    public function store(CreateDetailPenjualanBarangRequest $request)
     {
         $input = $request->all();
 
@@ -65,7 +65,7 @@ class Detail_Penjualan_BarangController extends AppBaseController
     }
 
     /**
-     * Display the specified Detail_Penjualan_Barang.
+     * Display the specified DetailPenjualanBarang.
      *
      * @param  int $id
      *
@@ -81,11 +81,11 @@ class Detail_Penjualan_BarangController extends AppBaseController
             return redirect(route('detailPenjualanBarangs.index'));
         }
 
-        return view('detail__penjualan__barangs.show')->with('detailPenjualanBarang', $detailPenjualanBarang);
+        return view('detail_penjualan_barangs.show')->with('detailPenjualanBarang', $detailPenjualanBarang);
     }
 
     /**
-     * Show the form for editing the specified Detail_Penjualan_Barang.
+     * Show the form for editing the specified DetailPenjualanBarang.
      *
      * @param  int $id
      *
@@ -101,18 +101,18 @@ class Detail_Penjualan_BarangController extends AppBaseController
             return redirect(route('detailPenjualanBarangs.index'));
         }
 
-        return view('detail__penjualan__barangs.edit')->with('detailPenjualanBarang', $detailPenjualanBarang);
+        return view('detail_penjualan_barangs.edit')->with('detailPenjualanBarang', $detailPenjualanBarang);
     }
 
     /**
-     * Update the specified Detail_Penjualan_Barang in storage.
+     * Update the specified DetailPenjualanBarang in storage.
      *
      * @param  int              $id
-     * @param UpdateDetail_Penjualan_BarangRequest $request
+     * @param UpdateDetailPenjualanBarangRequest $request
      *
      * @return Response
      */
-    public function update($id, UpdateDetail_Penjualan_BarangRequest $request)
+    public function update($id, UpdateDetailPenjualanBarangRequest $request)
     {
         $detailPenjualanBarang = $this->detailPenjualanBarangRepository->findWithoutFail($id);
 
@@ -130,7 +130,7 @@ class Detail_Penjualan_BarangController extends AppBaseController
     }
 
     /**
-     * Remove the specified Detail_Penjualan_Barang from storage.
+     * Remove the specified DetailPenjualanBarang from storage.
      *
      * @param  int $id
      *

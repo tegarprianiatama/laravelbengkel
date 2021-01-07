@@ -8,9 +8,9 @@ use App\Repositories\KategoriMotorRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
-use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
-
+use Yajra\Datatables\Datatables;
+use DB;
 class KategoriMotorController extends AppBaseController
 {
     /** @var  KategoriMotorRepository */
@@ -29,11 +29,14 @@ class KategoriMotorController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $this->kategoriMotorRepository->pushCriteria(new RequestCriteria($request));
-        $kategoriMotors = $this->kategoriMotorRepository->all();
-
-        return view('kategori_motors.index')
-            ->with('kategoriMotors', $kategoriMotors);
+        if($request->ajax()) {
+            $kategoriMotor = DB::table('kategori_motors')->get();
+            return DataTables::of($kategoriMotor)
+            ->addColumn('action', 'kategori_motors.datatables_action')
+            ->addIndexColumn()
+            ->make(true);
+        }
+        return view('kategori_motors.index');
     }
 
     /**
@@ -73,7 +76,7 @@ class KategoriMotorController extends AppBaseController
      */
     public function show($id)
     {
-        $kategoriMotor = $this->kategoriMotorRepository->findWithoutFail($id);
+        $kategoriMotor = DB::table('kategori_motors')->where('ID_KATEGORI_MOTOR', '=' ,$id)->first();
 
         if (empty($kategoriMotor)) {
             Flash::error('Kategori Motor not found');
@@ -93,7 +96,7 @@ class KategoriMotorController extends AppBaseController
      */
     public function edit($id)
     {
-        $kategoriMotor = $this->kategoriMotorRepository->findWithoutFail($id);
+        $kategoriMotor = DB::table('kategori_motors')->where('ID_KATEGORI_MOTOR', '=', $id)->first();
 
         if (empty($kategoriMotor)) {
             Flash::error('Kategori Motor not found');
@@ -114,7 +117,7 @@ class KategoriMotorController extends AppBaseController
      */
     public function update($id, UpdateKategoriMotorRequest $request)
     {
-        $kategoriMotor = $this->kategoriMotorRepository->findWithoutFail($id);
+        $kategoriMotor = DB::table('kategori_motors')->where('ID_KATEGORI_MOTOR', '=', $id)->first();
 
         if (empty($kategoriMotor)) {
             Flash::error('Kategori Motor not found');
@@ -138,7 +141,7 @@ class KategoriMotorController extends AppBaseController
      */
     public function destroy($id)
     {
-        $kategoriMotor = $this->kategoriMotorRepository->findWithoutFail($id);
+        $kategoriMotor = DB::table('kategori_motors')->where('ID_KATEGORI_MOTOR', '=', $id)->first();
 
         if (empty($kategoriMotor)) {
             Flash::error('Kategori Motor not found');

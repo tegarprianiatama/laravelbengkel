@@ -200,6 +200,7 @@ class DataPembelianBarangController extends AppBaseController
 
         return redirect(route('dataPembelianBarangs.index'));
     }
+    
     public function print($id) {
         $dataPembelianBarang = $this->dataPembelianBarangRepository->findWithoutFail($id);
         $id = $dataPembelianBarang->ID_DATA_PEMBELIAN_BARANG;

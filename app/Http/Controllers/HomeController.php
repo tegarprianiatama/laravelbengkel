@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\DataBarang;
-
+use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     /**
@@ -24,7 +22,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $barang = DataBarang::all()->count();
-        return view('home')->with(['barang'=>$barang]);
+        $jmlBrg = DB::table('data_barang')->where('STOK', '<=', 5)->count();
+        return view('home')->with(['jmlBrg'=> $jmlBrg]);
     }
 }

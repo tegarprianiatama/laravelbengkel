@@ -1,7 +1,6 @@
 <!-- Id Pelanggan Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('ID_PELANGGAN', 'Pelanggan:') !!}
-    {{-- {!! Form::select('ID_PELANGGAN', $datapelanggan, null, ['class' => 'form-control', 'placeholder' => 'Pilih Pelanggan']) !!} --}}
     {!! Form::select('ID_PELANGGAN', $datapelanggan, null, ['class' => 'form-control select-pelanggan','placeholder'=>'Pilih Pelanggan']) !!}
 </div>
 
@@ -28,13 +27,13 @@
 <!-- Id Mekanik Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('ID_MEKANIK', 'Mekanik:') !!}
-    {!! Form::select('ID_MEKANIK', $datamekanik, null, ['class' => 'form-control', 'placeholder' => 'Pilih Mekanik']) !!}
+    {!! Form::select('ID_MEKANIK', $datamekanik, null, ['class' => 'form-control select-mekanik', 'placeholder' => 'Pilih Mekanik']) !!}
 </div>
 
 <!-- Id Detail Motor Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('ID_DETAIL_MOTOR', 'Detail Motor:') !!}
-    {!! Form::select('ID_DETAIL_MOTOR', $datamotorpelanggan, null, ['class' => 'form-control']) !!}
+    {!! Form::select('ID_DETAIL_MOTOR', $datamotorpelanggan, null, ['class' => 'form-control select-detail-motor', 'placeholder' => 'Pilih Motor Pelanggan']) !!}
 </div>
 
 <!-- Id Jasa Servis Field -->
@@ -61,12 +60,6 @@
     {!! Form::text('BIAYA_TAMBAHAN', 0, ['ID' => 'BIAYA_TAMBAHAN', 'class' => 'form-control', 'onchange' => 'hitungTotalAll()']) !!}
 </div>
 
-{{-- <!-- Total Diskon Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('TOTAL_DISKON', 'Total Diskon:') !!}
-    {!! Form::text('TOTAL_DISKON', 0, ['class' => 'form-control']) !!}
-</div> --}}
-
 <!-- Total Jasa Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('TOTAL_JASA', 'Total Jasa :') !!}
@@ -78,14 +71,6 @@
     {!! Form::label('TOTAL_BARANG', 'Total Barang :') !!}
     {!! Form::text('TOTAL_BARANG', null, ['class' => 'form-control']) !!}
 </div>
-
-<!-- Total Field -->
-{{-- <div class="form-group col-sm-6">
-    {!! Form::label('TOTAL', 'Total :') !!}
-    {!! Form::text('TOTAL', null, ['class' => 'form-control']) !!}
-    {!! Form::hidden('TOTAL_BERSIH', 0, ['class' => 'form-control', 'id' => 'TOTAL_BERSIH', 'readonly']) !!}
-    {!! Form::hidden('KEMBALIAN', 0, ['class' => 'form-control', 'id' => 'KEMBALIAN', 'readonly']) !!}
-</div> --}}
 
 <div class="form-group col-md-12">
 <h4>Barang</h4>

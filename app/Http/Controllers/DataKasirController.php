@@ -46,7 +46,7 @@ class DataKasirController extends AppBaseController
      */
     public function create()
     {
-        $role = Role::pluck('name','id');
+        $role = Role::pluck('name', 'id');
         return view('data_kasirs.create')->with(['role' => $role]);
     }
 

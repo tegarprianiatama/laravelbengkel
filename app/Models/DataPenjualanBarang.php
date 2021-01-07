@@ -107,7 +107,7 @@ class DataPenjualanBarang extends Model
 
         public function detailPenjualanBarang()
     {
-        return $this->hasMany(\App\Models\Detail_Penjualan_Barang::class, 'ID_TRANSAKSI_PENJUALAN');
+        return $this->hasMany(\App\Models\DetailPenjualanBarang::class, 'ID_TRANSAKSI_PENJUALAN');
     }
         public function laporanPenjualanBarang()
     {

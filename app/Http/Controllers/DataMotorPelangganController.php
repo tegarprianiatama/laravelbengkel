@@ -8,7 +8,6 @@ use App\Repositories\DataMotorPelangganRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
-use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Models\DataPelanggan;
 use App\Models\DataMotorPelanggan;
@@ -34,24 +33,16 @@ class DataMotorPelangganController extends AppBaseController
      */
     public function index(Request $request, $id)
     {
-        // $this->dataMotorPelangganRepository->pushCriteria(new RequestCriteria($request));
-        // $dataMotorPelanggans = $this->dataMotorPelangganRepository->all();
-
         if ($request->ajax()) {
             $dataMotorPelanggans = DataMotorPelanggan::orderBy('created_at', 'desc')->with(['dataPelanggan', 'kategoriMotor'])->where('ID_PELANGGAN', $id)->get();
             return DataTables::of($dataMotorPelanggans)
-                ->addColumn('action', function($row) {
-                    return view('data_motor_pelanggans.datatables_actions', compact('row'));  
-                })
-                ->addIndexColumn()
-                // ->editColumn('TGL_PEMBELIAN', function ($dataPembelianBarang) {
-                //     return $dataPembelianBarang->TGL_PEMBELIAN;
-                // })
-                ->make(true);
+            ->addColumn('action', function($row) {
+                return view('data_motor_pelanggans.datatables_actions', compact('row'));  
+            })
+            ->addIndexColumn()
+            ->make(true);
         }
-
         return view('data_motor_pelanggans.index');
-            // ->with('dataMotorPelanggans', $dataMotorPelanggans);
     }
 
     /**
@@ -63,7 +54,7 @@ class DataMotorPelangganController extends AppBaseController
     {
         // $dataPelanggan = DataPelanggan::pluck('NAMA','ID_PELANGGAN');
         $dataPelanggan = DataPelanggan::where('ID_PELANGGAN', $idPelanggan)->first();
-        $kategorimotor = KategoriMotor::pluck('NAMA','id');
+        $kategorimotor = KategoriMotor::pluck('NAMA','ID_KATEGORI_MOTOR');
         return view('data_motor_pelanggans.create')->with(['dataPelanggan'  => $dataPelanggan, 'kategorimotor'  => $kategorimotor]);
     }
 
@@ -77,7 +68,7 @@ class DataMotorPelangganController extends AppBaseController
     public function store(CreateDataMotorPelangganRequest $request)
     {
         $input = $request->all();
-
+        
         $dataMotorPelanggan = $this->dataMotorPelangganRepository->create($input);
 
         Flash::success('Data Motor Pelanggan saved successfully.');
@@ -116,7 +107,7 @@ class DataMotorPelangganController extends AppBaseController
     {
         $dataMotorPelanggan = $this->dataMotorPelangganRepository->findWithoutFail($id);
         $dataPelanggan = DataPelanggan::where('ID_PELANGGAN', $idPelanggan)->first();
-        $kategorimotor = KategoriMotor::pluck('NAMA','id');
+        $kategorimotor = KategoriMotor::pluck('NAMA','ID_KATEGORI_MOTOR');
 
         if (empty($dataMotorPelanggan)) {
             Flash::error('Data Motor Pelanggan not found');

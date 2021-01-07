@@ -6,7 +6,7 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Detail_Penjualan_Barang
+ * Class DetailPenjualanBarang
  * @package App\Models
  * @version March 5, 2019, 10:37 am UTC
  *
@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property float HARGA_JUAL
  * @property float SUBTOTAL
  */
-class Detail_Penjualan_Barang extends Model
+class DetailPenjualanBarang extends Model
 {
     use SoftDeletes;
 
